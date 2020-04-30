@@ -15,8 +15,9 @@ async function getUserInformation(name) {
         const access = await getAcces();
         const response = await fetch(`https://api.twitter.com/1.1/users/show.json?screen_name=cjosue159`, {
             headers: {
-                Authorization: `Bearer ${access}`,
+                Authorization: `Bearer ${access.access_token}`,
             },
+            mode: 'no-cors',
         });
         console.log(response.json());
         return await response.json();
