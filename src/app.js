@@ -8,7 +8,7 @@ const app = express();
 
 dotenv.config();
 
-app.use(cors({ credentials: true, origin: 'http://localhost:3000/' }));
+app.use(cors({ credentials: true, origin: 'https://cjosue15-social.herokuapp.com/' }));
 
 const port = Number(process.env.PORT);
 

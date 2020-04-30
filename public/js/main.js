@@ -3,7 +3,7 @@ const button = document.getElementById('sendUser');
 
 async function getAcces() {
     try {
-        const response = await fetch('http://localhost:3000/', { method: 'post' });
+        const response = await fetch('/', { method: 'post' });
         return await response.json();
     } catch (error) {
         console.log(error);
