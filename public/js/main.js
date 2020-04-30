@@ -1,34 +1,23 @@
 const user = document.getElementById('account');
 const button = document.getElementById('sendUser');
 
-async function getAcces() {
+async function getAcces(name) {
     try {
-        const response = await fetch('/', { method: 'post' });
-        return await response.json();
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-async function getUserInformation(name) {
-    try {
-        const access = await getAcces();
-        const response = await fetch(`https://api.twitter.com/1.1/users/show.json?screen_name=cjosue159`, {
+        const response = await fetch('/', {
+            method: 'post',
+            body: JSON.stringify({ name }),
             headers: {
-                Authorization: `Bearer ${access.access_token}`,
+                'Content-Type': 'application/json',
             },
-            mode: 'no-cors',
         });
-        console.log(response.json());
-        return await response.json();
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.log(error);
     }
 }
 
 button.addEventListener('click', async () => {
-    // const twitter = await getUserInformation(user.value);
-    // console.log(twitter);
-    const data = await getUserInformation();
+    const data = await getAcces(user.value);
     console.log(data);
 });
